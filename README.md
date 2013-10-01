@@ -36,4 +36,4 @@ After installation, restart Inkscape. You should now be able to select the JPG f
 TODO
 ----
 
-- Check for Imagemagick's convert ` executable.
+- Check for Imagemagick's `convert` executable.
