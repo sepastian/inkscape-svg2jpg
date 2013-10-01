@@ -31,6 +31,8 @@ Usage
 
 After installation, restart Inkscape. You should now be able to select the JPG format when saving an SVG drawing.
 
+![inkscape-svg2jpg screenshot](./screenshot.png "JPG extension added to Inkscape's 'Save as...' dialog.")
+
 TODO
 ----
 
