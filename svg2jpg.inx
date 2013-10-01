@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <_name>svg2jpg</_name>
+    <id>com.sebastiangassner.svg2jpg</id>
+    <dependency type="executable" location="extensions">svg2jpg.sh</dependency>
+    <output>
+      <extension>.jpg</extension>
+      <mimetype>image/jpeg</mimetype>
+      <_filetypename>JPEG (*.jpg)</_filetypename>
+      <dataloss>TRUE</dataloss>
+    </output>
+    <script>
+        <command reldir="extensions">svg2jpg.sh</command>
+    </script>
+</inkscape-extension>
