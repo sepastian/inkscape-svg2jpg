@@ -1,7 +1,9 @@
 SVG to JPG conversion for Inkscape
 ==================================
 
-This plugin adds the JPG file type to Inkscape's "Save as..." dialog.
+This plugin adds the JPG file type to Inkscape's *Save As...* dialog.
+
+![inkscape-svg2jpg screenshot](./screenshot.png "JPG extension added to Inkscape's 'Save as...' dialog.")
 
 Dependencies: Imagemagick and Bash. Imagemagick's `convert` command must be in the path of the user running Inkscape, Bash should come with most Linux distributions.
 
@@ -29,9 +31,7 @@ Or installation for current user
 Usage
 -----
 
-After installation, restart Inkscape. You should now be able to select the JPG format when saving an SVG drawing.
-
-![inkscape-svg2jpg screenshot](./screenshot.png "JPG extension added to Inkscape's 'Save as...' dialog.")
+After installation, restart Inkscape. If you select *File* > *Save As...*, you should be able to save the current drawing in JPG format by selecting _JPEG (*.jpg)_ from the dropdown box in the bottom right corner.
 
 TODO
 ----
