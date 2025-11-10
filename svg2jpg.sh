@@ -1,15 +1,38 @@
 #!/bin/bash
 
-# Convert an SVG file to JPG via PNG.
-# The name of the input SVG file is read from STDIN.
-# The output JPEG file is written to STDOUT.
+# Check input
+SVG_FILE="$1"
+if [ ! -f "$SVG_FILE" ]; then
+    echo "Error: SVG file not found."
+    exit 1
+fi
 
-SVG_TMP_FILE="$1"
-PNG_TMP_FILE="/tmp/$(mktemp 'svg2jpg.png.XXXXX')"
+# Set DPI (300–600 for sharp results)
+DPI=600
 
-# Convert input SVG file to temporary PNG file.
-# Note: writes all output of 'inkscape' to /dev/null, even (possible) error messages.
-inkscape --export-png="${PNG_TMP_FILE}" --export-area-page "${SVG_TMP_FILE}" 2&>1 /dev/null
+# Temporary PNG
+TMP_PNG=$(mktemp /tmp/svg2jpg.XXXXX.png)
 
-# Convert temporary PNG file to JPG on STDOUT, delete temporary PNG file.
-convert "${PNG_TMP_FILE}" jpeg:-
+# Convert SVG to PNG
+inkscape "$SVG_FILE" \
+    --export-area-page \
+    --export-dpi="$DPI" \
+    --export-type=png \
+    --export-filename="$TMP_PNG" >/dev/null 2>&1
+
+# Check if PNG was created
+if [ ! -f "$TMP_PNG" ]; then
+    echo "Error: Failed to rasterize SVG."
+    exit 1
+fi
+
+# Convert PNG to high-quality JPEG and write to stdout
+convert "$TMP_PNG" \
+    -quality 100 \
+    -sampling-factor 4:4:4 \
+    -define jpeg:fancy-upsampling=off \
+    -interlace Plane \
+    jpeg:-
+
+# Clean up
+rm -f "$TMP_PNG"
