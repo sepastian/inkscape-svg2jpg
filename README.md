@@ -1,4 +1,6 @@
 > [!IMPORTANT]
+> **You should not need to use this anymore!**
+> 
 > Since version 1.1, Inkscape allows exporting to JPG directly, see the [release notes](https://wiki.inkscape.org/wiki/index.php/Release_notes/1.1#raster_export).
 >
 > To export to JPG, press Ctrl+Shift+E or go to File > Export.
