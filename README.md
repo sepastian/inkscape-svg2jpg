@@ -1,3 +1,12 @@
+> [!IMPORTANT]
+> Since version 1.1, Inkscape allows exporting to JPG directly, see the [release notes](https://wiki.inkscape.org/wiki/index.php/Release_notes/1.1#raster_export).
+>
+> To export to JPG, press Ctrl+Shift+E or go to File > Export.
+> 
+> This extension has been created before Inkscape allowed exporting to JPG.
+> It depends in ImageMagick and has been tested under Linux only.
+> It is recommended to use Inkscape's own export functionality, instead of using this extension.
+
 SVG to JPG conversion for Inkscape
 ==================================
 
