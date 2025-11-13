@@ -1,15 +1,19 @@
 #!/bin/bash
-
 # Convert an SVG file to JPG via PNG.
-# The name of the input SVG file is read from STDIN.
-# The output JPEG file is written to STDOUT.
+# Input: SVG filename as first argument
+# Output: JPEG data to STDOUT
 
-SVG_TMP_FILE="$1"
-PNG_TMP_FILE="/tmp/$(mktemp 'svg2jpg.png.XXXXX')"
+# Get SVG filename from command-line argument
+SVG_FILE="$1"
 
-# Convert input SVG file to temporary PNG file.
-# Note: writes all output of 'inkscape' to /dev/null, even (possible) error messages.
-inkscape --export-png="${PNG_TMP_FILE}" --export-area-page "${SVG_TMP_FILE}" 2&>1 /dev/null
+# Create temporary PNG file
+PNG_FILE=$(mktemp /tmp/svg2jpg.XXXXX.png)
 
-# Convert temporary PNG file to JPG on STDOUT, delete temporary PNG file.
-convert "${PNG_TMP_FILE}" jpeg:-
+# Convert SVG to PNG using Inkscape
+inkscape --export-type=png --export-area-page "$SVG_FILE" --export-filename="$PNG_FILE" >/dev/null 2>&1
+
+# Convert PNG to JPEG and write to stdout
+convert "$PNG_FILE" jpeg:-
+
+# Remove temporary file
+rm -f "$PNG_FILE"
